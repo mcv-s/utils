@@ -26,8 +26,6 @@ The same thing but for the Y position.
 
 <br>
 
-<br>
-
 ## tooltips.js
 
 Import using
@@ -35,6 +33,16 @@ Import using
 `<script src="https://mcv-s.github.io/utils/web/tooltips.js"></script>`
 
 Then you can put the attribute `data-tooltip` on any object, and upon hover, it will have a nice little popup tooltip.
+
+
+## themeToggle.js
+
+Import using
+
+`<script src="https://mcv-s.github.io/utils/web/themeToggle.js"></script>`
+
+Adds a little theme toggle icon to the bottom right of the screen - has three options: light, dark, and system.
+
 
 ## phosphor-icons
 
