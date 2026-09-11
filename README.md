@@ -12,6 +12,10 @@ Import using
 
 `<script src="https://mcv-s.github.io/utils/web/gameFunctions.js"></script>`
 
+<br>
+
+Import the script and it will add these methods/properties:
+
 ### object.x
 
 Returns the X position of an object (simple way of getting the position left in pixels.)
