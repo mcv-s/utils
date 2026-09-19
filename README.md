@@ -52,6 +52,21 @@ Alternatively use themeToggleBubble + a slightly different import option to make
 `<script type="module" src="https://mcv-s.github.io/utils/web/themeToggleBubble.js"></script>`
 
 
+## colorTheme.css
+
+Finally standardized . . . 
+
+Import using
+
+`<link rel="stylesheet" href="https://mcv-s.github.io/utils/web/colorTheme.css">`
+
+It provides all the default variables such as:
+
+--bg
+--text
+--accent (That's my accent color, you might want to override it.)
+
+
 ## phosphor-icons
 
 I did not make these. But they are amazing. Import using
