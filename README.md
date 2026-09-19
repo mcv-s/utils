@@ -72,7 +72,7 @@ It provides all the default variables such as:
 
 Import using
 
-`<link rel="stylesheet" href="https://mcv-s.github.io/utils/web/brancTheme.css">`
+`<link rel="stylesheet" href="https://mcv-s.github.io/utils/web/brandTheme.css">`
 
 Makes all the buttons look like buttons and colors everything according to those color vars we used earlier.
 
