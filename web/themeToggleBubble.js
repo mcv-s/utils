@@ -358,3 +358,4 @@ options.forEach(option => {
 
 
 updateThemeSelector();
+updateThemeIcon();

@@ -36,8 +36,9 @@ Import using
 
 `<script src="https://mcv-s.github.io/utils/web/tooltips.js"></script>`
 
-Then you can put the attribute `data-tooltip` on any object, and upon hover, it will have a nice little popup tooltip.
+Then you can put the attribute `data-tooltip="Tooltip Text"` on any object, and upon hover, it will have a nice little popup tooltip.
 
+<br>
 
 ## themeToggle.js
 
@@ -47,10 +48,30 @@ Import using
 
 Adds a little theme toggle icon to the bottom right of the screen - has three options: light, dark, and system.
 
+### Reliances:
+`
+--border
+--surface 
+--accent
+--button-hover `
+
+
 Alternatively use themeToggleBubble + a slightly different import option to make the toggle use [@Hyperplexed's bubbles system](https://bubbles.hyperplexed.io/) instead:
 
 `<script type="module" src="https://mcv-s.github.io/utils/web/themeToggleBubble.js"></script>`
 
+### Reliances:
+`
+phosphor icons import
+--bg
+--text 
+--surface 
+--border 
+--button-hover `
+
+
+
+<br>
 
 ## colorTheme.css
 
@@ -66,7 +87,7 @@ It provides all the default variables such as:
 --text
 --accent (That's my accent color, you might want to override it.)
 
-
+<br>
 
 ## brandTheme.css
 
@@ -76,7 +97,7 @@ Import using
 
 Makes all the buttons look like buttons and colors everything according to those color vars we used earlier.
 
-
+<br>
 
 ## phosphor-icons
 

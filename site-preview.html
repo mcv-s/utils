@@ -2,75 +2,99 @@
 <html lang="en">
 
 <head>
-
-    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-
-
-    <!-- Standard, external imports -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-
-    <!------------------------------------------
-    Imports for quick preview -->
+    <title>Site preview</title>
 
     <link rel="stylesheet" href="web/colorTheme.css">
     <link rel="stylesheet" href="web/brandTheme.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script type="module" src="web/themeToggleBubble.js"></script>
     <script src="web/tooltips.js"></script>
 
-    
+    <style>
+        .preview-board {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 12px;
+            padding: 12px;
+            overflow: auto;
+        }
 
+        .preview-site {
+            min-width: 0;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
 
+        .preview-site .toolbar {
+            height: 36px;
+            padding: 0 8px;
+        }
 
+        .preview-site iframe {
+            flex: 1;
+            width: 100%;
+            min-height: 0;
+            border: 0;
+            background: var(--bg);
+        }
 
+        @media (max-width: 700px) {
+            .preview-board {
+                grid-template-columns: minmax(280px, 1fr);
+            }
+        }
+    </style>
 
-
-    <script src="program.js"></script>
-
-
-
-    <meta name="theme-color" content="#1e1e1e">
-
-    <link rel="icon" href="Logo-2.png" type="image/png">
-
-    <link rel="apple-touch-icon" href="Logo-1.png">
 
 
 </head>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <body>
+    <header class="toolbar">
+        <a class="app-title" href="site-preview.html">Site preview</a>
+        <div class="toolbar-actions">
+            <button isIcon type="button" data-tooltip="Reload previews" onclick="location.reload()">
+                <i class="ph ph-arrow-clockwise"></i>
+            </button>
+        </div>
+        <div class="file-name">static preview list</div>
+    </header>
 
+    <main class="preview preview-board">
+        <!-- Add or remove preview-site blocks here. Keep each src pointed at the site to test. -->
+        <section class="preview-site">
+            <header class="toolbar">
+                <span class="file-name">default-page.html</span>
+            </header>
+            <iframe title="Preview of default-page.html" src="default-page.html"></iframe>
+        </section>
 
-    Hello
+        <section class="preview-site">
+            <header class="toolbar">
+                <span class="file-name">Replace with site 2</span>
+            </header>
+            <iframe title="Preview of site 2" src="https://mcv-s.github.io/markdown-editor-plus"></iframe>
+        </section>
 
+        <section class="preview-site">
+            <header class="toolbar">
+                <span class="file-name">Replace with site 3</span>
+            </header>
+            <iframe title="Preview of site 3" src="https://mcv-s.github.io/redirect"></iframe>
+        </section>
+    </main>
 
+    <footer class="status-bar">
+        <span>Preview resources are loaded from this checkout when the embedded site is served locally.</span>
+        <span>3 sites</span>
+    </footer>
 </body>
-
-
-
-
-
-
-
-
-
-
 
 </html>

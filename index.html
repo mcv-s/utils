@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>utils README</title>
+
+    <style>
+        :root {
+            --readme-width: 860px;
+            --code-bg: color-mix(in srgb, var(--surface) 82%, #000 18%);
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+        }
+
+        .readme-header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 52px;
+            padding: 0 max(20px, calc((100vw - var(--readme-width)) / 2));
+            background: color-mix(in srgb, var(--surface) 92%, transparent);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .readme-title {
+            color: var(--text);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .readme-title span,
+        #status {
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        #status {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: .85rem;
+        }
+
+        .markdown-body {
+            width: min(var(--readme-width), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 56px 0 96px;
+            line-height: 1.7;
+        }
+
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3 {
+            line-height: 1.25;
+            margin: 1.8em 0 .65em;
+        }
+
+        .markdown-body h1 {
+            margin-top: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .markdown-body h2 {
+            padding-bottom: .25em;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .markdown-body a {
+            color: var(--accent);
+        }
+
+        .markdown-body code {
+            padding: 2px;
+            border-radius: 4px;
+            background: var(--surface);
+            font: .9em/1.4 "Cascadia Code", Consolas, monospace;
+        }
+
+        .markdown-body pre {
+            position: relative;
+            overflow: auto;
+            margin: 1.25em 0;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--code-bg);
+        }
+
+        .markdown-body pre code {
+            padding: 0;
+            background: transparent;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            font-size: .8rem;
+        }
+
+        .inline-code-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0 2px;
+            padding: 4px 4px;
+            border-radius: 4px;
+            background: var(--surface);
+        }
+
+        .inline-code-copy code {
+            padding: .15em .2em;
+        }
+
+        .inline-copy-button {
+            padding: 5px;
+            border: 0;
+            font-size: .72rem;
+            line-height: 1.4;
+        }
+
+        .error-state {
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface);
+        }
+
+        @media (max-width: 600px) {
+            .readme-header {
+                padding: 0 20px;
+            }
+
+            .markdown-body {
+                padding-top: 36px;
+            }
+
+            .readme-title span {
+                display: none;
+            }
+        }
+    </style>
+
+    <meta name="theme-color" content="#1e1e1e">
+    <link rel="icon" href="Logo-2.png" type="image/png">
+    <link rel="apple-touch-icon" href="Logo-1.png">
+
+
+
+
+    <!-- Standard, external imports -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+    <!------------------------------------------
+    Imports for quick preview -->
+
+    <link rel="stylesheet" href="web/colorTheme.css">
+    <link rel="stylesheet" href="web/brandTheme.css">
+    <script type="module" src="web/themeToggleBubble.js"></script>
+    <script src="web/tooltips.js"></script>
+
+
+
+    <!-- Actual imports for genuine web use:
+    ------------------------------------------
+    
+
+    <link rel="stylesheet" href="https://mcv-s.github.io/utils/web/colorTheme.css">
+    <link rel="stylesheet" href="https://mcv-s.github.io/utils/web/brandTheme.css">
+    <script type="module" src="https://mcv-s.github.io/utils/web/themeToggleBubble.js"></script>
+    <script src="https://mcv-s.github.io/utils/web/tooltips.js"></script>
+
+
+    -->
+
+
+
+    <!-- Normal project-based imports -->
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+    <header class="readme-header">
+        <a class="readme-title" href="README.md">utils <span>/ README.md</span></a>
+        <span id="status" role="status">Loading README...</span>
+    </header>
+
+    <main id="readme" class="markdown-body" aria-live="polite"></main>
+
+    <template id="error-template">
+        <section class="error-state">
+            <h1>README unavailable</h1>
+            <p>Open this page through a local web server so it can load <code>README.md</code>.</p>
+        </section>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const readme = document.querySelector('#readme');
+        const status = document.querySelector('#status');
+
+        function addCopyButtons() {
+            readme.querySelectorAll('pre').forEach((codeBlock) => {
+                const button = document.createElement('button');
+                button.className = 'copy-button';
+                button.type = 'button';
+                button.innerHTML = '<i class="ph ph-copy"></i>';
+                button.addEventListener('click', async () => {
+                    const code = codeBlock.querySelector('code').textContent;
+                    await navigator.clipboard.writeText(code);
+                    button.innerHTML = 'Copied!';
+                    window.setTimeout(() => { button.innerHTML = '<i class="ph ph-copy"></i>'; }, 1500);
+                });
+                codeBlock.append(button);
+            });
+
+            readme.querySelectorAll('code:not(pre code)').forEach((code) => {
+                const wrapper = document.createElement('span');
+                const button = document.createElement('button');
+                wrapper.className = 'inline-code-copy';
+                button.className = 'inline-copy-button';
+                button.type = 'button';
+                button.innerHTML = '<i class="ph ph-copy"></i>';
+                button.setAttribute('aria-label', `Copy ${code.textContent}`);
+                button.addEventListener('click', async () => {
+                    await navigator.clipboard.writeText(code.textContent);
+                    button.textContent = 'Copied!';
+                    window.setTimeout(() => { button.innerHTML = '<i class="ph ph-copy"></i>'; }, 1500);
+                });
+                code.replaceWith(wrapper);
+                wrapper.append(code, button);
+            });
+        }
+
+        async function renderReadme() {
+            try {
+                const response = await fetch('README.md');
+                if (!response.ok) throw new Error(`README request failed: ${response.status}`);
+                readme.innerHTML = marked.parse(await response.text());
+                addCopyButtons();
+                status.textContent = 'README.md';
+            } catch (error) {
+                readme.replaceChildren(document.querySelector('#error-template').content.cloneNode(true));
+                status.textContent = 'Unable to load README.md';
+                console.error(error);
+            }
+        }
+
+        renderReadme();
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+</html>
