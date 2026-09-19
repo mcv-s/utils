@@ -67,6 +67,17 @@ It provides all the default variables such as:
 --accent (That's my accent color, you might want to override it.)
 
 
+
+## brandTheme.css
+
+Import using
+
+`<link rel="stylesheet" href="https://mcv-s.github.io/utils/web/brancTheme.css">`
+
+Makes all the buttons look like buttons and colors everything according to those color vars we used earlier.
+
+
+
 ## phosphor-icons
 
 I did not make these. But they are amazing. Import using
