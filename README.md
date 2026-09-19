@@ -49,7 +49,7 @@ Adds a little theme toggle icon to the bottom right of the screen - has three op
 
 Alternatively use themeToggleBubble + a slightly different import option to make the toggle use [@Hyperplexed's bubbles system](https://bubbles.hyperplexed.io/) instead:
 
-`<script type="module" src="themeToggleBubble.js"></script>`
+`<script type="module" src="https://mcv-s.github.io/utils/web/themeToggleBubble.js"></script>`
 
 
 ## phosphor-icons
